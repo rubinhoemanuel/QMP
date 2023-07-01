@@ -1,0 +1,44 @@
+class Prenda {
+  -tipo: TipoPrenda
+  -categoria: CategoriaPrenda
+  -material: Material
+  -colorPrincipal: Color
+  -colorSecundario: Color
+  
+  +validaciones(TipoPrenda,CategoriaPrenda,Material,Color,Color):void
+  +existeColorSecundario():boolean 
+}
+
+Prenda --> TipoPrenda
+Prenda --> CategoriaPrenda
+Prenda --> Material
+Prenda --> Color
+ 
+class TipoPrenda {
+  -categoria: CategoriaPrenda
+}
+
+TipoPrenda -> CategoriaPrenda
+
+enum CategoriaPrenda {
+  SUPERIOR,
+  INFERIOR,
+  CALZADO,
+  ACCESORIO
+}
+
+enum Material {
+  ALGODON,
+  GABARDINA,
+  LINO,
+  PANA,
+  NYLON,
+  POLIESTER,
+  CUERO
+}
+
+class Color {
+  -red: BigDecimal
+  -green: BigDecimal
+  -blue: BigDecimal
+}

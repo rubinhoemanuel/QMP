@@ -14,7 +14,7 @@ public class PrendaTest {
     private Material materialAlgodonRayado;
 
     @BeforeEach
-    public void init() {
+    public void setUp() {
         tipoPrendaRemera = new TipoPrenda("Nike", CategoriaPrenda.PARTE_SUPERIOR);
         colorNegro = new Color(0,0,0);
         colorBlanco = new Color(255,255,255);

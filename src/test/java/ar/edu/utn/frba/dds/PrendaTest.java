@@ -2,7 +2,6 @@ package ar.edu.utn.frba.dds;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PrendaTest {
@@ -50,7 +49,6 @@ public class PrendaTest {
     @Test
     public void crearPrendaSinMaterial() {
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            //Prenda prendaSinMaterial = new Prenda(tipoPrendaRemera, CategoriaPrenda.PARTE_SUPERIOR, null, null, null);
             Prenda prendaSinMaterial = borrador
                     .tipoPrenda(tipoPrendaRemera)
                     .material(null)
@@ -64,7 +62,6 @@ public class PrendaTest {
     @Test
     public void crearPrendaSinColorPrimario() {
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            //Prenda prendaSinColorPrimario = new Prenda(tipoPrendaRemera, CategoriaPrenda.PARTE_SUPERIOR, Material.ALGODON, null, null);
             Prenda prendaSinColorPrimario = borrador
                     .tipoPrenda(tipoPrendaRemera)
                     .material(materialAlgodonRayado)

@@ -4,6 +4,10 @@ import java.util.List;
 
 public class MotorDeSugerenciasNoInformalMayoresDe55 extends MotorDeSugerencias {
 
+  public MotorDeSugerenciasNoInformalMayoresDe55(ServicioMeteorologico servicioMeteorologico) {
+    super(servicioMeteorologico);
+  }
+
   @Override
   public List<Prenda> obtenerPrendasValidas(List<Prenda> prendas, Integer edad) {
     return prendasValidas = edad > 55 ? prendas.stream().filter(p -> !p.esInformal()).toList() : prendas;

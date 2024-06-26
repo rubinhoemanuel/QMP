@@ -6,6 +6,11 @@ import java.util.List;
 public abstract class MotorDeSugerencias {
 
   protected List<Prenda> prendasValidas;
+  protected ServicioMeteorologico servicioMeteorologico;
+
+  public MotorDeSugerencias(ServicioMeteorologico servicioMeteorologico) {
+    this.servicioMeteorologico = servicioMeteorologico;
+  }
 
   public abstract List<Prenda> obtenerPrendasValidas(List<Prenda> prendas, Integer edad);
 
@@ -26,15 +31,24 @@ public abstract class MotorDeSugerencias {
   }
 
   private List<Prenda> obtenerPrendasCalzado(List<Prenda> prendasValidas) {
-    return prendasValidas.stream().filter(Prenda::esPrendaCalzado).toList();
+    return prendasValidas.stream()
+        .filter(p -> p.esPrendaCalzado() &&
+            p.esAdecuadaParaUnaTemperatura(this.servicioMeteorologico.getTemperatura("Buenos Aires, Argentina")))
+        .toList();
   }
 
   private List<Prenda> obtenerPrendasInferiores(List<Prenda> prendasValidas) {
-    return prendasValidas.stream().filter(Prenda::esPrendaInferior).toList();
+    return prendasValidas.stream()
+        .filter(p -> p.esPrendaInferior() &&
+            p.esAdecuadaParaUnaTemperatura(this.servicioMeteorologico.getTemperatura("Buenos Aires, Argentina")))
+        .toList();
   }
 
   private List<Prenda> obtenerPrendasSuperiores(List<Prenda> prendasValidas) {
-    return prendasValidas.stream().filter(Prenda::esPrendaSuperior).toList();
+    return prendasValidas.stream()
+        .filter(p -> p.esPrendaSuperior() &&
+            p.esAdecuadaParaUnaTemperatura(this.servicioMeteorologico.getTemperatura("Buenos Aires, Argentina")))
+        .toList();
   }
 
 }

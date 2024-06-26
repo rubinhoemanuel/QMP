@@ -8,6 +8,7 @@ public class Borrador {
     private Color colorPrincipal;
     private Color colorSecundario;
     private Formalidad formalidad;
+    private Integer temperaturaMaxima;
 
     public Borrador tipoPrenda(TipoPrenda tipoPrenda){
         if (tipoPrenda==null) {
@@ -54,11 +55,16 @@ public class Borrador {
         return this;
     }
 
+    public Borrador temperaturaMaxima(Integer unaTemperatura) {
+        this.temperaturaMaxima = unaTemperatura;
+        return this;
+    }
+
     public Prenda crear(){
         if (tipoPrenda.getCategoria() != categoriaPrenda) {
             throw new RuntimeException("La categoria del tipo de prenda no se condice con la categoria de la prenda");
         }
-        return new Prenda(tipoPrenda, categoriaPrenda, material, colorPrincipal, colorSecundario, formalidad);
+        return new Prenda(tipoPrenda, categoriaPrenda, material, colorPrincipal, colorSecundario, formalidad, temperaturaMaxima);
     }
 
 

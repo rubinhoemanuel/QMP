@@ -10,11 +10,17 @@ public class UsuarioTest {
 
   private MotorDeSugerenciasBasico motorBasico;
   private MotorDeSugerenciasNoInformalMayoresDe55 motorNoInformalMayoresDe55;
+  private ServicioMeteorologicoAccuWeather servicioMeteorologico;
+  private AccuWeatherAPI apiClima;
+  private Borrador borrador;
 
   @BeforeEach
   public void setUp() {
-    motorBasico = new MotorDeSugerenciasBasico();
-    motorNoInformalMayoresDe55 = new MotorDeSugerenciasNoInformalMayoresDe55();
+    this.borrador = new Borrador();
+    this.apiClima = new AccuWeatherAPI();
+    this.servicioMeteorologico = new ServicioMeteorologicoAccuWeather(apiClima);
+    motorBasico = new MotorDeSugerenciasBasico(this.servicioMeteorologico);
+    motorNoInformalMayoresDe55 = new MotorDeSugerenciasNoInformalMayoresDe55(this.servicioMeteorologico);
   }
 
   @Test
@@ -23,7 +29,7 @@ public class UsuarioTest {
     List<Prenda> prendas = generarPrendas();
     Usuario jose = new Usuario(prendas, 30);
     List<Sugerencia> sugerencias = jose.generarSugerencias();
-    assertEquals(sugerencias.size(), 8);
+    assertEquals(sugerencias.size(), 1);
   }
 
   @Test
@@ -32,7 +38,7 @@ public class UsuarioTest {
     List<Prenda> prendas = generarPrendas();
     Usuario pedro = new Usuario(prendas, 60);
     List<Sugerencia> sugerencias = pedro.generarSugerencias();
-    assertEquals(sugerencias.size(), 8);
+    assertEquals(sugerencias.size(), 1);
   }
 
   @Test
@@ -41,7 +47,7 @@ public class UsuarioTest {
     List<Prenda> prendas = generarPrendas();
     Usuario maria = new Usuario(prendas, 22);
     List<Sugerencia> sugerencias = maria.generarSugerencias();
-    assertEquals(sugerencias.size(), 8);
+    assertEquals(sugerencias.size(), 1);
   }
 
   @Test
@@ -50,7 +56,7 @@ public class UsuarioTest {
     List<Prenda> prendas = generarPrendas();
     Usuario rosa = new Usuario(prendas, 70);
     List<Sugerencia> sugerencias = rosa.generarSugerencias();
-    assertEquals(sugerencias.size(), 2);
+    assertEquals(sugerencias.size(), 1);
   }
 
   private List<Prenda> generarPrendas() {
@@ -58,8 +64,8 @@ public class UsuarioTest {
     TipoPrenda tipoCamisa = new TipoPrenda("camisas", CategoriaPrenda.PARTE_SUPERIOR);
     TipoPrenda tipoRemera = new TipoPrenda("remeras", CategoriaPrenda.PARTE_SUPERIOR);
 
-    TipoPrenda tipoPantalon = new TipoPrenda("pantalones", CategoriaPrenda.PARTE_INFERIRO);
-    TipoPrenda tipoPollera = new TipoPrenda("polleras", CategoriaPrenda.PARTE_INFERIRO);
+    TipoPrenda tipoPantalon = new TipoPrenda("pantalones", CategoriaPrenda.PARTE_INFERIOR);
+    TipoPrenda tipoPollera = new TipoPrenda("polleras", CategoriaPrenda.PARTE_INFERIOR);
 
     TipoPrenda tipoZapatilla = new TipoPrenda("zapatillas", CategoriaPrenda.CALZADO);
     TipoPrenda tipoZapato = new TipoPrenda("zapatos", CategoriaPrenda.CALZADO);
@@ -72,14 +78,60 @@ public class UsuarioTest {
     Color colorVerde = new Color(0,255,0);
     Color colorNegro = new Color(0,0,255);
 
-    Prenda prendaCamisaAlgodonRayadoRojo = new Prenda(tipoCamisa, CategoriaPrenda.PARTE_SUPERIOR, materialAlgodonRayado, colorRojo, null, Formalidad.FORMAL);
-    Prenda prendaRemeraPoliesterLisaRoja = new Prenda(tipoRemera, CategoriaPrenda.PARTE_SUPERIOR, materialPoliesterLiso, colorVerde, null, Formalidad.NEUTRA);
+    Prenda prendaCamisaAlgodonRayadoRojo = this.borrador
+        .tipoPrenda(tipoCamisa)
+        .categoria(CategoriaPrenda.PARTE_SUPERIOR)
+        .material(materialAlgodonRayado)
+        .colorPrincipal(colorRojo)
+        .formalidad(Formalidad.FORMAL)
+        .temperaturaMaxima(20)
+        .crear();
 
-    Prenda prendaPantalonAlgodonRayadoNegro = new Prenda(tipoPantalon, CategoriaPrenda.PARTE_INFERIRO, materialAlgodonRayado, colorNegro, null, Formalidad.FORMAL);
-    Prenda prendaPolleraCueroACuadrosRoja = new Prenda(tipoPollera, CategoriaPrenda.PARTE_INFERIRO, materialCueroACuadros, colorRojo, null, Formalidad.INFORMAL);
+    Prenda prendaRemeraPoliesterLisaRoja = this.borrador
+        .tipoPrenda(tipoRemera)
+        .categoria(CategoriaPrenda.PARTE_SUPERIOR)
+        .material(materialPoliesterLiso)
+        .colorPrincipal(colorVerde)
+        .formalidad(Formalidad.NEUTRA)
+        .temperaturaMaxima(10)
+        .crear();
 
-    Prenda prendaZapatillaCueroACuadrosVerde = new Prenda(tipoZapatilla, CategoriaPrenda.CALZADO, materialCueroACuadros, colorNegro, null, Formalidad.FORMAL);
-    Prenda prendaZapatoCueroACuadrosNegra = new Prenda(tipoZapato, CategoriaPrenda.CALZADO, materialCueroACuadros, colorNegro, null, Formalidad.INFORMAL);
+    Prenda prendaPantalonAlgodonRayadoNegro = this.borrador
+        .tipoPrenda(tipoPantalon)
+        .categoria(CategoriaPrenda.PARTE_INFERIOR)
+        .material(materialAlgodonRayado)
+        .colorPrincipal(colorNegro)
+        .formalidad(Formalidad.FORMAL)
+        .temperaturaMaxima(20)
+        .crear();
+
+    Prenda prendaPolleraCueroACuadrosRoja = this.borrador
+        .tipoPrenda(tipoPollera)
+        .categoria(CategoriaPrenda.PARTE_INFERIOR)
+        .material(materialCueroACuadros)
+        .colorPrincipal(colorRojo)
+        .formalidad(Formalidad.INFORMAL)
+        .temperaturaMaxima(10)
+        .crear();
+
+    Prenda prendaZapatillaCueroACuadrosVerde = this.borrador
+        .tipoPrenda(tipoZapatilla)
+        .categoria(CategoriaPrenda.CALZADO)
+        .material(materialCueroACuadros)
+        .colorPrincipal(colorNegro)
+        .formalidad(Formalidad.FORMAL)
+        .temperaturaMaxima(20)
+        .crear();
+      //new Prenda(tipoZapatilla, CategoriaPrenda.CALZADO, materialCueroACuadros, colorNegro, null, Formalidad.FORMAL);
+
+    Prenda prendaZapatoCueroACuadrosNegra = this.borrador
+        .tipoPrenda(tipoZapato)
+        .categoria(CategoriaPrenda.CALZADO)
+        .material(materialCueroACuadros)
+        .colorPrincipal(colorNegro)
+        .formalidad(Formalidad.INFORMAL)
+        .temperaturaMaxima(10)
+        .crear();
 
     List<Prenda> prendas = new ArrayList<>();
     prendas.add(prendaCamisaAlgodonRayadoRojo);

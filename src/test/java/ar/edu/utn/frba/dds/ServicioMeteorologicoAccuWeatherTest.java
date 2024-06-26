@@ -2,13 +2,13 @@ package ar.edu.utn.frba.dds;
 
 import org.junit.jupiter.api.Test;
 
-public class ServicioMeteorologicoTest {
+public class ServicioMeteorologicoAccuWeatherTest {
 
-  private ServicioMeteorologico servicioMeteorologico;
+  private ServicioMeteorologicoAccuWeather servicioMeteorologico;
 
   @Test
   public void obtenerTemperaturaDeUnaCiudad() {
-    this.servicioMeteorologico = new ServicioMeteorologico(new AccuWeatherAPI());
+    this.servicioMeteorologico = new ServicioMeteorologicoAccuWeather(new AccuWeatherAPI());
     var temp = this.servicioMeteorologico.getTemperatura("Buenos Aires, Argentina");
     System.out.println(temp);
   }

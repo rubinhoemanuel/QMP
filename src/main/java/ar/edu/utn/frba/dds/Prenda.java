@@ -1,5 +1,10 @@
 package ar.edu.utn.frba.dds;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public class Prenda {
 
     private TipoPrenda tipo;
@@ -8,42 +13,10 @@ public class Prenda {
     private Color colorPrincipal;
     private Color colorSecundario;
     private Formalidad formalidad;
-
-    public Prenda(TipoPrenda tipo, CategoriaPrenda categoria, Material material, Color colorPrincipal, Color colorSecundario, Formalidad formalidad) {
-        this.tipo = tipo;
-        this.categoria = categoria;
-        this.material = material;
-        this.colorPrincipal = colorPrincipal;
-        this.colorSecundario = colorSecundario;
-        this.formalidad = formalidad;
-    }
+    private Integer temperaturaMaxima;
 
     public boolean existeColorSecundario() {
         return colorSecundario != null;
-    }
-
-    public TipoPrenda getTipo() {
-        return tipo;
-    }
-
-    public CategoriaPrenda getCategoria() {
-        return categoria;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public Color getColorPrincipal() {
-        return colorPrincipal;
-    }
-
-    public Color getColorSecundario() {
-        return colorSecundario;
-    }
-
-    public Formalidad getFormalidad() {
-        return formalidad;
     }
 
     public boolean esPrendaSuperior() {
@@ -51,7 +24,7 @@ public class Prenda {
   }
 
     public boolean esPrendaInferior() {
-        return this.getCategoria() == CategoriaPrenda.PARTE_INFERIRO;
+        return this.getCategoria() == CategoriaPrenda.PARTE_INFERIOR;
     }
 
     public boolean esPrendaCalzado() {
@@ -61,4 +34,9 @@ public class Prenda {
     public boolean esInformal() {
         return this.formalidad == Formalidad.INFORMAL;
     }
+
+    public boolean esAdecuadaParaUnaTemperatura(Integer unaTemperatura) {
+        return this.temperaturaMaxima > unaTemperatura;
+    }
+
 }

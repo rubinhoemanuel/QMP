@@ -1,10 +1,12 @@
 package ar.edu.utn.frba.dds;
 
-import com.google.common.collect.Lists;
-
 import java.util.List;
 
 public class MotorDeSugerenciasBasico extends MotorDeSugerencias {
+
+  public MotorDeSugerenciasBasico(ServicioMeteorologico servicioMeteorologico) {
+    super(servicioMeteorologico);
+  }
 
   @Override
   public List<Prenda> obtenerPrendasValidas(List<Prenda> prendas, Integer edad) {

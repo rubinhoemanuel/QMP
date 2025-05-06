@@ -1,9 +1,17 @@
 package ar.edu.utn.frba.dds.qmp;
 
-public enum Material {
-  ALGODON,
-  LINO,
-  POLIESTER,
-  CUERO,
-  TERCIOPELO
+import lombok.Getter;
+
+@Getter
+public class Material {
+
+  private Trama trama;
+
+  public Material(Trama trama) {
+    if (trama == null) {
+      trama = Trama.LISA;
+    }
+    this.trama = trama;
+  }
+
 }

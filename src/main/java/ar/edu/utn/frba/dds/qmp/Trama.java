@@ -1,0 +1,9 @@
+package ar.edu.utn.frba.dds.qmp;
+
+public enum Trama {
+  LISA,
+  RAYADA,
+  CON_LUNARES,
+  A_CUADROS,
+  ESTAMPADO
+}

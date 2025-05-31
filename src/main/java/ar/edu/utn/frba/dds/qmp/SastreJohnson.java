@@ -1,5 +1,8 @@
 package ar.edu.utn.frba.dds.qmp;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class SastreJohnson implements Sastre {
 
   @Override

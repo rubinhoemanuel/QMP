@@ -20,7 +20,7 @@ public class SastreSanJuan implements Sastre {
         .especificarTipoPrenda(new TipoPrenda(Categoria.PARTE_SUPERIOR))
         .especificarMaterial(pique)
         .especificarCategoria(Categoria.PARTE_SUPERIOR)
-        .especificarColorPrincipal(new Color(0,255,0))
+        .especificarColorPrincipal(new Color(0, 128, 0))
         .crearPrenda();
   }
 
@@ -33,7 +33,7 @@ public class SastreSanJuan implements Sastre {
         .especificarTipoPrenda(new TipoPrenda(Categoria.PARTE_INFERIOR))
         .especificarMaterial(acetato)
         .especificarCategoria(Categoria.PARTE_INFERIOR)
-        .especificarColorPrincipal(new Color(128,128,128))
+        .especificarColorPrincipal(new Color(128, 128, 128))
         .crearPrenda();
   }
 
@@ -46,7 +46,7 @@ public class SastreSanJuan implements Sastre {
         .especificarTipoPrenda(new TipoPrenda(Categoria.CALZADO))
         .especificarMaterial(lona)
         .especificarCategoria(Categoria.CALZADO)
-        .especificarColorPrincipal(new Color(255,255,255))
+        .especificarColorPrincipal(new Color(255, 255,  255))
         .crearPrenda();
   }
 }

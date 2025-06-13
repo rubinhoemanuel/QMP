@@ -23,7 +23,7 @@ public class SastreJohnson implements Sastre {
         .especificarTipoPrenda(new TipoPrenda(Categoria.PARTE_SUPERIOR))
         .especificarMaterial(seda)
         .especificarCategoria(Categoria.PARTE_SUPERIOR)
-        .especificarColorPrincipal(new Color(255,255,255))
+        .especificarColorPrincipal(new Color(255, 255, 255))
         .crearPrenda();
   }
 
@@ -36,7 +36,7 @@ public class SastreJohnson implements Sastre {
         .especificarTipoPrenda(new TipoPrenda(Categoria.PARTE_INFERIOR))
         .especificarMaterial(lino)
         .especificarCategoria(Categoria.PARTE_INFERIOR)
-        .especificarColorPrincipal(new Color(0,0,0))
+        .especificarColorPrincipal(new Color(0, 0, 0))
         .crearPrenda();
   }
 
@@ -49,7 +49,7 @@ public class SastreJohnson implements Sastre {
         .especificarTipoPrenda(new TipoPrenda(Categoria.CALZADO))
         .especificarMaterial(cuero)
         .especificarCategoria(Categoria.CALZADO)
-        .especificarColorPrincipal(new Color(0,0,0))
+        .especificarColorPrincipal(new Color(0, 0, 0))
         .crearPrenda();
   }
 }

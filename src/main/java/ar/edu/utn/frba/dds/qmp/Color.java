@@ -15,4 +15,10 @@ public class Color {
     this.blue = blue;
   }
 
+  public boolean esIgual(Color otroColor) {
+    return this.red.equals(otroColor.getRed())
+        && this.green.equals(otroColor.getGreen())
+        && this.blue.equals(otroColor.getBlue());
+  }
+
 }

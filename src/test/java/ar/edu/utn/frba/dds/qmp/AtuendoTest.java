@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
-public class UniformeTest {
+public class AtuendoTest {
 
   @Test
   public void testFabricarUniformeSastreJohnson() {
@@ -40,17 +40,17 @@ public class UniformeTest {
         .crearPrenda();
 
     // Act
-    Uniforme uniforme = sastreJohnson.fabricarUniforme();
+    Atuendo atuendo = sastreJohnson.fabricarUniforme();
 
     // Assert
-    assertEquals(prendaSuperiorCamisaBlanca.getTipoPrenda().getCategoria(),uniforme.getPrendaSuperior().getCategoria());
-    assertTrue(prendaSuperiorCamisaBlanca.getColorPrincipal().esIgual(uniforme.getPrendaSuperior().getColorPrincipal()));
+    assertEquals(prendaSuperiorCamisaBlanca.getTipoPrenda().getCategoria(), atuendo.getPrendaSuperior().getCategoria());
+    assertTrue(prendaSuperiorCamisaBlanca.getColorPrincipal().esIgual(atuendo.getPrendaSuperior().getColorPrincipal()));
 
-    assertEquals(prendaInferiorPantalonVestirNegro.getTipoPrenda().getCategoria(),uniforme.getPrendaInferior().getCategoria());
-    assertTrue(prendaInferiorPantalonVestirNegro.getColorPrincipal().esIgual(uniforme.getPrendaInferior().getColorPrincipal()));
+    assertEquals(prendaInferiorPantalonVestirNegro.getTipoPrenda().getCategoria(), atuendo.getPrendaInferior().getCategoria());
+    assertTrue(prendaInferiorPantalonVestirNegro.getColorPrincipal().esIgual(atuendo.getPrendaInferior().getColorPrincipal()));
 
-    assertEquals(prendaCalzadoZapatosNegros.getTipoPrenda().getCategoria(),uniforme.getCalzado().getCategoria());
-    assertTrue(prendaCalzadoZapatosNegros.getColorPrincipal().esIgual(uniforme.getCalzado().getColorPrincipal()));
+    assertEquals(prendaCalzadoZapatosNegros.getTipoPrenda().getCategoria(), atuendo.getCalzado().getCategoria());
+    assertTrue(prendaCalzadoZapatosNegros.getColorPrincipal().esIgual(atuendo.getCalzado().getColorPrincipal()));
   }
 
   @Test
@@ -89,22 +89,22 @@ public class UniformeTest {
         .crearPrenda();
 
     // Act
-    Uniforme uniforme = sastreSanJuan.fabricarUniforme();
+    Atuendo atuendo = sastreSanJuan.fabricarUniforme();
 
     // Assert
     assertEquals(prendaSuperiorChombaVerdeDePique.getTipoPrenda().getCategoria(),
-        uniforme.getPrendaSuperior().getCategoria());
-    assertTrue(uniforme.getPrendaSuperior().getColorPrincipal().esIgual(colorVerde));
-    assertEquals(materialPique.getTrama(), uniforme.getPrendaSuperior().getMaterial().getTrama());
+        atuendo.getPrendaSuperior().getCategoria());
+    assertTrue(atuendo.getPrendaSuperior().getColorPrincipal().esIgual(colorVerde));
+    assertEquals(materialPique.getTrama(), atuendo.getPrendaSuperior().getMaterial().getTrama());
 
     assertEquals(prendaInferiorPantalonDeAcetatoGris.getTipoPrenda().getCategoria(),
-        uniforme.getPrendaInferior().getCategoria());
-    assertTrue(uniforme.getPrendaInferior().getColorPrincipal().esIgual(colorGris));
-    assertEquals(materialAcetato.getTrama(), uniforme.getPrendaSuperior().getMaterial().getTrama());
+        atuendo.getPrendaInferior().getCategoria());
+    assertTrue(atuendo.getPrendaInferior().getColorPrincipal().esIgual(colorGris));
+    assertEquals(materialAcetato.getTrama(), atuendo.getPrendaSuperior().getMaterial().getTrama());
 
     assertEquals(prendaCalzadoZapatillasBlancas.getTipoPrenda().getCategoria(),
-        uniforme.getCalzado().getCategoria());
-    assertTrue(uniforme.getCalzado().getColorPrincipal().esIgual(colorBlanco));
+        atuendo.getCalzado().getCategoria());
+    assertTrue(atuendo.getCalzado().getColorPrincipal().esIgual(colorBlanco));
   }
 
 }

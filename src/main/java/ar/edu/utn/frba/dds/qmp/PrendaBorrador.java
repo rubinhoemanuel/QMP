@@ -7,6 +7,7 @@ public class PrendaBorrador {
   private Categoria categoria;
   private Color colorPrincipal;
   private Color colorSecundario;
+  private FormalidadPrenda formalidad;
 
   public PrendaBorrador especificarTipoPrenda(TipoPrenda tipoPrenda) {
     this.tipoPrenda = tipoPrenda;
@@ -33,13 +34,19 @@ public class PrendaBorrador {
     return this;
   }
 
+  public PrendaBorrador especificarFormalidad(FormalidadPrenda formalidad) {
+    this.formalidad = formalidad;
+    return this;
+  }
+
   public Prenda crearPrenda() {
     this.validarPrendaBorrador();
     return new Prenda(this.tipoPrenda,
         this.categoria,
         this.material,
         this.colorPrincipal,
-        this.colorSecundario);
+        this.colorSecundario,
+        this.formalidad);
   }
 
   private void validarPrendaBorrador() {

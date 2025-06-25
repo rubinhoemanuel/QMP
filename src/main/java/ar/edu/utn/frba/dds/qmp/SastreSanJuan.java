@@ -3,8 +3,8 @@ package ar.edu.utn.frba.dds.qmp;
 public class SastreSanJuan implements Sastre {
 
   @Override
-  public Uniforme fabricarUniforme() {
-    return new Uniforme(
+  public Atuendo fabricarUniforme() {
+    return new Atuendo(
         this.fabricarParteSuperior(),
         this.fabricarParteInferior(),
         this.fabricarCalzado()
